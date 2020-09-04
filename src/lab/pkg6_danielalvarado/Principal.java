@@ -58,6 +58,9 @@ public class Principal extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         jt_Ealbum = new javax.swing.JTextField();
         jb_GuardarCambios = new javax.swing.JButton();
+        popup_TableCanciones = new javax.swing.JPopupMenu();
+        jm_ModificarCancion = new javax.swing.JMenuItem();
+        jmt_EliminarCancion = new javax.swing.JMenuItem();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -243,6 +246,22 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jm_ModificarCancion.setText("jMenuItem1");
+        jm_ModificarCancion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jm_ModificarCancionActionPerformed(evt);
+            }
+        });
+        popup_TableCanciones.add(jm_ModificarCancion);
+
+        jmt_EliminarCancion.setText("jMenuItem2");
+        jmt_EliminarCancion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmt_EliminarCancionActionPerformed(evt);
+            }
+        });
+        popup_TableCanciones.add(jmt_EliminarCancion);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -283,6 +302,11 @@ public class Principal extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        jt_CancionesPlaylist.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jt_CancionesPlaylistMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(jt_CancionesPlaylist);
@@ -335,10 +359,6 @@ public class Principal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel7)
-                .addGap(287, 287, 287))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(418, 418, 418)
@@ -369,6 +389,10 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(cb_Playlists, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(127, 127, 127))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel7)
+                .addGap(288, 288, 288))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -403,17 +427,17 @@ public class Principal extends javax.swing.JFrame {
                             .addComponent(cb_Playlists, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(44, 44, 44)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
-                .addComponent(jLabel7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
-                        .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jb_CrearCancion, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(35, 35, 35)
-                        .addComponent(jb_CrearCancion, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
 
         pack();
@@ -484,7 +508,9 @@ public class Principal extends javax.swing.JFrame {
 
                 modelo2.addRow(newRow);
             }
-
+            
+            jl_Playlist.setText(((Playlist)cb_Playlists.getSelectedItem()).getNombre());
+            
             jt_CancionesPlaylist.setModel(modelo2);
         }
     }//GEN-LAST:event_cb_PlaylistsItemStateChanged
@@ -512,6 +538,7 @@ public class Principal extends javax.swing.JFrame {
     private void jm_AgregarPlaylistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jm_AgregarPlaylistActionPerformed
         DefaultTableModel modelo = (DefaultTableModel) jt_CancionesPlaylist.getModel();
         DefaultListModel modelo2 = (DefaultListModel) jl_Canciones.getModel();
+        DefaultComboBoxModel modelc = (DefaultComboBoxModel) cb_Playlists.getModel();
 
         if (jl_Canciones.getSelectedIndex() >= 0) {
 
@@ -527,8 +554,17 @@ public class Principal extends javax.swing.JFrame {
             };
 
             modelo.addRow(newRow);
-
+            modelo2.removeElement(c);
+            
             jt_CancionesPlaylist.setModel(modelo);
+            jl_Canciones.setModel(modelo2);
+            
+            ((Playlist)cb_Playlists.getSelectedItem()).getListaCanciones().add(c);
+            
+            cancionesCreadas.remove(c);
+            
+            
+            
 
             JOptionPane.showMessageDialog(this, "La cancion se ha agregado a "
                     + "la tabla del playlist correctamente");
@@ -539,11 +575,13 @@ public class Principal extends javax.swing.JFrame {
 
     private void jb_GuardarCambiosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_GuardarCambiosMouseClicked
         DefaultListModel modelo = (DefaultListModel) jl_Canciones.getModel();
+        DefaultTableModel modelt = (DefaultTableModel) jt_CancionesPlaylist.getModel();
+        DefaultComboBoxModel modelc = (DefaultComboBoxModel) cb_Playlists.getModel();
 
         if (jt_Enombre.getText().equals("") || jt_EArtista.getText().equals("")
                 || jt_Ealbum.getText().equals("")) {
             JOptionPane.showMessageDialog(jd_EditarCancion, "No puede dejar las casillas vacias!");
-        } else {
+        } else if(jl_Canciones.getSelectedIndex() >= 0){
 
             int index = jl_Canciones.getSelectedIndex();
 
@@ -558,6 +596,27 @@ public class Principal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Se edito la cancion correctamente");
             jd_EditarCancion.setVisible(false);
         }
+        else if(jt_CancionesPlaylist.getSelectedRow() >= 1){
+            
+            int indice = jt_CancionesPlaylist.getSelectedRow();
+             modelt.setValueAt(jt_Enombre.getText(), indice, 0);
+             modelt.setValueAt(js_EditarP.getValue(), indice, 1);
+             modelt.setValueAt(js_EditarYear.getValue(), indice, 2);
+             modelt.setValueAt(jt_EArtista.getText(), indice, 3);
+             modelt.setValueAt(jt_Ealbum.getText(), indice, 4);
+             
+             jt_CancionesPlaylist.setModel(modelt);
+             
+             try {
+                ((Playlist)cb_Playlists.getSelectedItem()).escribirArchivo();
+            } catch (Exception e) {
+            }
+             
+             
+             JOptionPane.showMessageDialog(this, "Se edito la cancion de la tabla correctamente");
+             jd_EditarCancion.setVisible(false);
+        }
+        
 
     }//GEN-LAST:event_jb_GuardarCambiosMouseClicked
 
@@ -579,6 +638,65 @@ public class Principal extends javax.swing.JFrame {
         jt_EArtista.setText(c.getArtista());
         jt_Ealbum.setText(c.getAlbum());
     }//GEN-LAST:event_jm_EditarCancionActionPerformed
+
+    private void jm_ModificarCancionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jm_ModificarCancionActionPerformed
+        jd_EditarCancion.setModal(true);
+        jd_EditarCancion.pack();
+        jd_EditarCancion.setLocationRelativeTo(this);
+        jd_EditarCancion.setVisible(true);
+        
+        DefaultTableModel modelo = (DefaultTableModel) jt_CancionesPlaylist.getModel();
+        
+        int index = jt_CancionesPlaylist.getSelectedRow();
+        
+        jt_Enombre.setText((String)modelo.getValueAt(index, 0));
+        js_EditarP.setValue(modelo.getValueAt(index, 1));
+        js_EditarYear.setValue(modelo.getValueAt(index, 2));
+        jt_EArtista.setText((String)modelo.getValueAt(index, 3));
+        jt_Ealbum.setText((String)modelo.getValueAt(index, 4));
+    }//GEN-LAST:event_jm_ModificarCancionActionPerformed
+
+    private void jt_CancionesPlaylistMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_CancionesPlaylistMouseClicked
+       if(evt.isMetaDown()){
+           if(jt_CancionesPlaylist.getSelectedRow() >= 0){
+               popup_TableCanciones.show(jt_CancionesPlaylist, evt.getX(), evt.getY());
+           }
+       }
+    }//GEN-LAST:event_jt_CancionesPlaylistMouseClicked
+
+    private void jmt_EliminarCancionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmt_EliminarCancionActionPerformed
+        DefaultTableModel modelo = (DefaultTableModel) jt_CancionesPlaylist.getModel();
+        DefaultListModel modelol = (DefaultListModel) jl_Canciones.getModel();
+        
+        int index = jt_CancionesPlaylist.getSelectedRow();
+        
+        Cancion c = new Cancion(
+                (String)modelo.getValueAt(index, 0),
+                (int)modelo.getValueAt(index, 1),
+                (int)modelo.getValueAt(index, 2),
+                (String)modelo.getValueAt(index, 3),
+                (String)modelo.getValueAt(index, 4)
+        );
+        
+        modelo.removeRow(index);
+        
+        cancionesCreadas.add(c);
+        
+        modelol.addElement(c);
+        
+        jl_Canciones.setModel(modelol);
+        jt_CancionesPlaylist.setModel(modelo);
+        
+        
+        try {
+            ((Playlist)cb_Playlists.getSelectedItem()).escribirArchivo();
+        } catch (Exception e) {
+        }
+        
+        
+        
+        
+    }//GEN-LAST:event_jmt_EliminarCancionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -650,6 +768,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jm_EditarCancion;
     private javax.swing.JMenuItem jm_EliminarCancion;
     private javax.swing.JMenuItem jm_GuardarPlaylist;
+    private javax.swing.JMenuItem jm_ModificarCancion;
+    private javax.swing.JMenuItem jmt_EliminarCancion;
     private javax.swing.JSpinner js_EditarP;
     private javax.swing.JSpinner js_EditarYear;
     private javax.swing.JSpinner js_Puntuacion;
@@ -663,6 +783,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField jt_NombreCancion;
     private javax.swing.JTextField jt_NombrePlaylist;
     private javax.swing.JPopupMenu popup_Cancion;
+    private javax.swing.JPopupMenu popup_TableCanciones;
     // End of variables declaration//GEN-END:variables
 
     ArrayList<Cancion> cancionesCreadas = new ArrayList();
