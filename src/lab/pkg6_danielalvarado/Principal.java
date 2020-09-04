@@ -5,11 +5,14 @@
  */
 package lab.pkg6_danielalvarado;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Scanner;
 import java.util.Set;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -340,6 +343,11 @@ public class Principal extends javax.swing.JFrame {
         jMenu1.add(jm_GuardarPlaylist);
 
         jm_AbrirPlaylist.setText("Abrir una Playlist");
+        jm_AbrirPlaylist.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jm_AbrirPlaylistActionPerformed(evt);
+            }
+        });
         jMenu1.add(jm_AbrirPlaylist);
 
         jm_CrearPlaylist.setText("Crear Playlist");
@@ -698,6 +706,93 @@ public class Principal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jmt_EliminarCancionActionPerformed
 
+    private void jm_AbrirPlaylistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jm_AbrirPlaylistActionPerformed
+        DefaultTableModel modelt = (DefaultTableModel) jt_CancionesPlaylist.getModel();
+        DefaultComboBoxModel modelc = (DefaultComboBoxModel) cb_Playlists.getModel();
+        Scanner sc = null;
+        
+        try {
+             ((Playlist)cb_Playlists.getSelectedItem()).escribirArchivo();
+        } catch (Exception e) {
+        }
+        
+        JFileChooser fileChooser = new JFileChooser("./");
+        limpiarTable();
+        
+        int seleccion = fileChooser.showOpenDialog(this);
+        
+        if(seleccion == JFileChooser.APPROVE_OPTION){
+            
+            try {
+                
+                
+                File archivo = fileChooser.getSelectedFile();
+                Playlist p = new Playlist();
+                p.setNombre(archivo.getName());
+                sc = new Scanner(archivo);
+                sc.useDelimiter("|");
+                
+                while (sc.hasNext()) {
+                    
+                    Cancion c = new Cancion(sc.next(), sc.nextInt(), sc.nextInt()
+                    , sc.next(), sc.next());
+                    
+                    Object [] newRow = {
+                        c.getNombre(), 
+                        c.getPuntuacion(),
+                        c.getAnio(),
+                        c.getArtista(),
+                        c.getAlbum()
+                    };
+                    sc.nextLine();
+                    modelt.addRow(newRow);
+                    
+                    p.getListaCanciones().add(c);
+                    
+                    
+                }
+                modelc.addElement(p);
+                jt_CancionesPlaylist.setModel(modelt);
+                cb_Playlists.setModel(modelc);
+                
+                
+            } catch (Exception e) {
+            }
+        }
+        
+        
+        
+    }//GEN-LAST:event_jm_AbrirPlaylistActionPerformed
+
+    private void limpiarTable(){
+        jt_CancionesPlaylist.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Puntuacion", "Year", "Artista", "Album"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            @Override
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            @Override
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
