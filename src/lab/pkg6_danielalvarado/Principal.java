@@ -249,7 +249,7 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jm_ModificarCancion.setText("jMenuItem1");
+        jm_ModificarCancion.setText("Modificar Cancion");
         jm_ModificarCancion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jm_ModificarCancionActionPerformed(evt);
@@ -257,7 +257,7 @@ public class Principal extends javax.swing.JFrame {
         });
         popup_TableCanciones.add(jm_ModificarCancion);
 
-        jmt_EliminarCancion.setText("jMenuItem2");
+        jmt_EliminarCancion.setText("Eliminar Cancion");
         jmt_EliminarCancion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmt_EliminarCancionActionPerformed(evt);
@@ -516,9 +516,9 @@ public class Principal extends javax.swing.JFrame {
 
                 modelo2.addRow(newRow);
             }
-            
-            jl_Playlist.setText(((Playlist)cb_Playlists.getSelectedItem()).getNombre());
-            
+
+            jl_Playlist.setText(((Playlist) cb_Playlists.getSelectedItem()).getNombre());
+
             jt_CancionesPlaylist.setModel(modelo2);
         }
     }//GEN-LAST:event_cb_PlaylistsItemStateChanged
@@ -563,16 +563,13 @@ public class Principal extends javax.swing.JFrame {
 
             modelo.addRow(newRow);
             modelo2.removeElement(c);
-            
+
             jt_CancionesPlaylist.setModel(modelo);
             jl_Canciones.setModel(modelo2);
-            
-            ((Playlist)cb_Playlists.getSelectedItem()).getListaCanciones().add(c);
-            
+
+            ((Playlist) cb_Playlists.getSelectedItem()).getListaCanciones().add(c);
+
             cancionesCreadas.remove(c);
-            
-            
-            
 
             JOptionPane.showMessageDialog(this, "La cancion se ha agregado a "
                     + "la tabla del playlist correctamente");
@@ -589,7 +586,7 @@ public class Principal extends javax.swing.JFrame {
         if (jt_Enombre.getText().equals("") || jt_EArtista.getText().equals("")
                 || jt_Ealbum.getText().equals("")) {
             JOptionPane.showMessageDialog(jd_EditarCancion, "No puede dejar las casillas vacias!");
-        } else if(jl_Canciones.getSelectedIndex() >= 0){
+        } else if (jl_Canciones.getSelectedIndex() >= 0) {
 
             int index = jl_Canciones.getSelectedIndex();
 
@@ -603,28 +600,26 @@ public class Principal extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(this, "Se edito la cancion correctamente");
             jd_EditarCancion.setVisible(false);
-        }
-        else if(jt_CancionesPlaylist.getSelectedRow() >= 1){
-            
+        } else if (jt_CancionesPlaylist.getSelectedRow() >= 0) {
+
             int indice = jt_CancionesPlaylist.getSelectedRow();
-             modelt.setValueAt(jt_Enombre.getText(), indice, 0);
-             modelt.setValueAt(js_EditarP.getValue(), indice, 1);
-             modelt.setValueAt(js_EditarYear.getValue(), indice, 2);
-             modelt.setValueAt(jt_EArtista.getText(), indice, 3);
-             modelt.setValueAt(jt_Ealbum.getText(), indice, 4);
-             
-             jt_CancionesPlaylist.setModel(modelt);
-             
-             try {
-                ((Playlist)cb_Playlists.getSelectedItem()).escribirArchivo();
+            modelt.setValueAt(jt_Enombre.getText(), indice, 0);
+            modelt.setValueAt(js_EditarP.getValue(), indice, 1);
+            modelt.setValueAt(js_EditarYear.getValue(), indice, 2);
+            modelt.setValueAt(jt_EArtista.getText(), indice, 3);
+            modelt.setValueAt(jt_Ealbum.getText(), indice, 4);
+
+            jt_CancionesPlaylist.setModel(modelt);
+
+            try {
+                ((Playlist) cb_Playlists.getSelectedItem()).escribirArchivo();
             } catch (Exception e) {
             }
-             
-             
-             JOptionPane.showMessageDialog(this, "Se edito la cancion de la tabla correctamente");
-             jd_EditarCancion.setVisible(false);
+
+            JOptionPane.showMessageDialog(this, "Se edito la cancion de la tabla correctamente");
+            jd_EditarCancion.setVisible(false);
         }
-        
+
 
     }//GEN-LAST:event_jb_GuardarCambiosMouseClicked
 
@@ -635,11 +630,11 @@ public class Principal extends javax.swing.JFrame {
         jd_EditarCancion.setVisible(true);
 
         DefaultListModel modelo = (DefaultListModel) jl_Canciones.getModel();
-        
+
         int index = jl_Canciones.getSelectedIndex();
-        
+
         Cancion c = (Cancion) modelo.get(index);
-        
+
         jt_Enombre.setText(c.getNombre());
         js_EditarP.setValue(c.getPuntuacion());
         js_EditarYear.setValue(c.getAnio());
@@ -652,147 +647,156 @@ public class Principal extends javax.swing.JFrame {
         jd_EditarCancion.pack();
         jd_EditarCancion.setLocationRelativeTo(this);
         jd_EditarCancion.setVisible(true);
-        
+
         DefaultTableModel modelo = (DefaultTableModel) jt_CancionesPlaylist.getModel();
-        
+
         int index = jt_CancionesPlaylist.getSelectedRow();
-        
-        jt_Enombre.setText((String)modelo.getValueAt(index, 0));
+
+        jt_Enombre.setText((String) modelo.getValueAt(index, 0));
         js_EditarP.setValue(modelo.getValueAt(index, 1));
         js_EditarYear.setValue(modelo.getValueAt(index, 2));
-        jt_EArtista.setText((String)modelo.getValueAt(index, 3));
-        jt_Ealbum.setText((String)modelo.getValueAt(index, 4));
+        jt_EArtista.setText((String) modelo.getValueAt(index, 3));
+        jt_Ealbum.setText((String) modelo.getValueAt(index, 4));
     }//GEN-LAST:event_jm_ModificarCancionActionPerformed
 
     private void jt_CancionesPlaylistMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_CancionesPlaylistMouseClicked
-       if(evt.isMetaDown()){
-           if(jt_CancionesPlaylist.getSelectedRow() >= 0){
-               popup_TableCanciones.show(jt_CancionesPlaylist, evt.getX(), evt.getY());
-           }
-       }
+        if (evt.isMetaDown()) {
+            if (jt_CancionesPlaylist.getSelectedRow() >= 0) {
+                popup_TableCanciones.show(jt_CancionesPlaylist, evt.getX(), evt.getY());
+            }
+        }
     }//GEN-LAST:event_jt_CancionesPlaylistMouseClicked
 
     private void jmt_EliminarCancionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmt_EliminarCancionActionPerformed
         DefaultTableModel modelo = (DefaultTableModel) jt_CancionesPlaylist.getModel();
         DefaultListModel modelol = (DefaultListModel) jl_Canciones.getModel();
-        
+
         int index = jt_CancionesPlaylist.getSelectedRow();
-        
+
         Cancion c = new Cancion(
-                (String)modelo.getValueAt(index, 0),
-                (int)modelo.getValueAt(index, 1),
-                (int)modelo.getValueAt(index, 2),
-                (String)modelo.getValueAt(index, 3),
-                (String)modelo.getValueAt(index, 4)
+                (String) modelo.getValueAt(index, 0),
+                (int) modelo.getValueAt(index, 1),
+                (int) modelo.getValueAt(index, 2),
+                (String) modelo.getValueAt(index, 3),
+                (String) modelo.getValueAt(index, 4)
         );
-        
+
         modelo.removeRow(index);
-        
+
         cancionesCreadas.add(c);
-        
+
         modelol.addElement(c);
-        
+
         jl_Canciones.setModel(modelol);
         jt_CancionesPlaylist.setModel(modelo);
-        
-        
+
         try {
-            ((Playlist)cb_Playlists.getSelectedItem()).escribirArchivo();
+            ((Playlist) cb_Playlists.getSelectedItem()).escribirArchivo();
         } catch (Exception e) {
         }
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_jmt_EliminarCancionActionPerformed
 
     private void jm_AbrirPlaylistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jm_AbrirPlaylistActionPerformed
         DefaultTableModel modelt = (DefaultTableModel) jt_CancionesPlaylist.getModel();
         DefaultComboBoxModel modelc = (DefaultComboBoxModel) cb_Playlists.getModel();
         Scanner sc = null;
-        
+
         try {
-             ((Playlist)cb_Playlists.getSelectedItem()).escribirArchivo();
+            ((Playlist) cb_Playlists.getSelectedItem()).escribirArchivo();
         } catch (Exception e) {
         }
-        
+
+       
         JFileChooser fileChooser = new JFileChooser("./");
         limpiarTable();
-        
+
         int seleccion = fileChooser.showOpenDialog(this);
-        
-        if(seleccion == JFileChooser.APPROVE_OPTION){
-            
+
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+
             try {
-                
-                
+                System.out.println("adentro del catch");
+
                 File archivo = fileChooser.getSelectedFile();
                 Playlist p = new Playlist();
-                p.setNombre(archivo.getName());
-                sc = new Scanner(archivo);
-                sc.useDelimiter("|");
                 
+                String nombre = archivo.getName();
+                int l = nombre.length();
+                
+                nombre = nombre.substring(0, l-4);
+                
+                p.setNombre(nombre);
+                sc = new Scanner(archivo);
+
+                String file = "";
+
+                while (sc.hasNext()) {
+                    file += sc.next();
+
+                }
+                String result = file.replace("|", ";");
+                System.out.println(result);
+                
+                sc = new Scanner(result);               
+                sc.useDelimiter(";");
+
                 while (sc.hasNext()) {
                     
-                    Cancion c = new Cancion(sc.next(), sc.nextInt(), sc.nextInt()
-                    , sc.next(), sc.next());
+                    Cancion c = new Cancion(sc.next(), sc.nextInt(), sc.nextInt(),
+                             sc.next(), sc.next());
                     
-                    Object [] newRow = {
-                        c.getNombre(), 
+                    
+                    Object[] newRow = {
+                        c.getNombre(),
                         c.getPuntuacion(),
                         c.getAnio(),
                         c.getArtista(),
                         c.getAlbum()
                     };
-                    sc.nextLine();
                     modelt.addRow(newRow);
-                    
+
                     p.getListaCanciones().add(c);
-                    
-                    
+
                 }
                 modelc.addElement(p);
                 jt_CancionesPlaylist.setModel(modelt);
                 cb_Playlists.setModel(modelc);
-                
-                
+
             } catch (Exception e) {
             }
         }
-        
-        
-        
+
+
     }//GEN-LAST:event_jm_AbrirPlaylistActionPerformed
 
-    private void limpiarTable(){
+    private void limpiarTable() {
         jt_CancionesPlaylist.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Nombre", "Puntuacion", "Year", "Artista", "Album"
-            }
+                new Object[][]{},
+                new String[]{
+                    "Nombre", "Puntuacion", "Year", "Artista", "Album"
+                }
         ) {
-            Class[] types = new Class [] {
+            Class[] types = new Class[]{
                 java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
-            boolean[] canEdit = new boolean [] {
+            boolean[] canEdit = new boolean[]{
                 false, false, false, false, false
             };
 
             @Override
             public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
+                return types[columnIndex];
             }
 
             @Override
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+                return canEdit[columnIndex];
             }
         });
     }
-    
-    
+
     /**
      * @param args the command line arguments
      */

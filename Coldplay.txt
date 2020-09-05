@@ -1,10 +1,10 @@
-Ink|10|2014|Coldplay|Love Story|
-Viva la Vida|10|2008|Coldplay|Viva la vida|
-StrawBerry Swing|9|2008|Coldplay|Viva la vida|
-Life in Technicolor ii|10|2008|Coldplay|Viva la vida|
-Orphans|8|2019|Coldplay|Everyday Life|
+Ink|10|2014|Coldplay|LoveStory|
+VivalaVida|10|2008|Coldplay|Vivalavida|
+StrawBerrySwing|9|2008|Coldplay|Vivalavida|
+LifeinTechnicolorii|10|2008|Coldplay|Vivalavida|
+Orphans|8|2019|Coldplay|EverydayLife|
 Shiver|9|2000|Coldplay|Parachutes|
 Yellow|10|2000|Coldplay|Parachutes|
-Clocks|10|2000|Coldplay|A Rush of Blood to the Head|
-True Love|8|2014|Coldplay|Love Story|
-Arabesque|8|2019|Coldplay|Everyday Life|
+Clocks|10|2000|Coldplay|ARushofBloodtotheHead|
+TrueLove|8|2014|Coldplay|LoveStory|
+Arabesque|8|2019|Coldplay|EverydayLife|

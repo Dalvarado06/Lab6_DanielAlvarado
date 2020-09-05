@@ -1,10 +1,10 @@
-Evil Woman|8|1975|Electric Light Orchestra|Out of the Blue|
-Turn into Stone|8|1975|Electric Light Orchestra|Out of the Blue|
-Time|10|1973|Pink Floyd|The Dark Side of the Moon|
-Money|10|1973|9|Pink Floyd|The Dark Side of the Moon|
-The Great Gig in the Sky|8|1973|Pink Floyd|The Dark Side of the Moon|
-Who can it be now|10|1981|Men at Work|Bussines as Usual|
-Dr Heckle and Mr Jive|9|1983|Men at Work|Cargo|
-Its a Mistake|9|1983|Men at Work|Cargo|
-A Sky Full of Stars|10|2014|Coldplay|Love Story|
-Knight of Cydonia|9|2006|Muse|Black Holes and Revelations|
+EvilWoman|8|1975|ElectricLightOrchestra|OutoftheBlue|
+TurnintoStone|8|1975|ElectricLightOrchestra|OutoftheBlue|
+Time|10|1973|PinkFloyd|TheDarkSideoftheMoon|
+Money|10|1973|PinkFloyd|TheDarkSideoftheMoon|
+TheGreatGigintheSky|9|1973|PinkFloyd|TheDarkSideoftheMoon|
+Whocanitbenow|10|1981|MenatWork|BussinesasUsual|
+DrHeckleandMrJive|9|1983|MenatWork|Cargo|
+ItsaMistake|9|1983|MenatWork|Cargo|
+ASkyFullofStars|10|2014|Coldplay|LoveStory|
+KnightofCydonia|9|2006|Muse|BlackHolesandRevelations|

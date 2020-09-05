@@ -48,7 +48,10 @@ public class Playlist {
     public void escribirArchivo() throws IOException {
         FileWriter fl = null;
         BufferedWriter bw = null;
-        File archivo = new File(getNombre() + ".txt");
+        
+        //String nombre = fi
+        
+        File archivo = new File("./"+getNombre() + ".txt");
 
         try {
             fl = new FileWriter(archivo, false);

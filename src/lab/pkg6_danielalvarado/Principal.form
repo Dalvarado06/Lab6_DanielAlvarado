@@ -263,7 +263,7 @@
       <SubComponents>
         <MenuItem class="javax.swing.JMenuItem" name="jm_ModificarCancion">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jMenuItem1"/>
+            <Property name="text" type="java.lang.String" value="Modificar Cancion"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jm_ModificarCancionActionPerformed"/>
@@ -271,7 +271,7 @@
         </MenuItem>
         <MenuItem class="javax.swing.JMenuItem" name="jmt_EliminarCancion">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jMenuItem2"/>
+            <Property name="text" type="java.lang.String" value="Eliminar Cancion"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmt_EliminarCancionActionPerformed"/>
