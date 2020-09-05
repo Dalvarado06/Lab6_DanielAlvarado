@@ -10,11 +10,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Scanner;
-import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
@@ -22,7 +18,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
+ * Al combo box funciona cuando quiere tenle paciencia :)
  * @author dalva
  */
 public class Principal extends javax.swing.JFrame {
@@ -33,6 +29,7 @@ public class Principal extends javax.swing.JFrame {
     public Principal() {
         initComponents();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -460,9 +457,9 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(486, 486, 486)
                         .addComponent(jLabel1)
-                        .addGap(42, 42, 42)
-                        .addComponent(jl_Playlist, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jl_Playlist, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(153, 153, 153)
                         .addComponent(cb_Playlists, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31)))
                 .addContainerGap(103, Short.MAX_VALUE))
@@ -931,6 +928,9 @@ public class Principal extends javax.swing.JFrame {
                 result = result.replace("|", ";");
                 
                 sc = new Scanner(result);
+                sc.useDelimiter(";");
+                
+                System.out.println(result);
                 
                 while (sc.hasNext()) {
                     Cancion c = new Cancion(
@@ -941,6 +941,7 @@ public class Principal extends javax.swing.JFrame {
                             sc.next()
                     );
                     
+                    System.out.println(c);
                     modelo.addElement(c);
                     
                 }
