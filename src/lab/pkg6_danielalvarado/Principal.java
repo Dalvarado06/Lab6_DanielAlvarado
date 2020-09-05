@@ -19,6 +19,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  * Al combo box funciona cuando quiere tenle paciencia :)
+ * Perdon por lo del frame ha de ser por los espacios y no lo pude agregar
  * @author dalva
  */
 public class Principal extends javax.swing.JFrame {
@@ -446,14 +447,12 @@ public class Principal extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 669, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 669, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jLabel7)
-                                    .addGap(260, 260, 260)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 669, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(260, 260, 260)
-                                .addComponent(jb_Limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jb_Limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(486, 486, 486)
                         .addComponent(jLabel1)
@@ -503,15 +502,15 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jb_Limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel7)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabel7)
                                 .addGap(18, 18, 18)
                                 .addComponent(jScrollPane2)
                                 .addContainerGap())
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
                                 .addComponent(jl_LimpiarLista, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(39, 39, 39)
                                 .addComponent(jb_Lista, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
